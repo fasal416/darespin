@@ -404,10 +404,10 @@ function GamePlayContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center space-y-4">
-          <Loader2 className="h-12 w-12 animate-spin text-white mx-auto" />
-          <p className="text-white text-lg">Loading game...</p>
+          <Loader2 className="h-12 w-12 animate-spin mx-auto" />
+          <p className="text-lg">Loading game...</p>
         </div>
       </div>
     );
@@ -422,7 +422,7 @@ function GamePlayContent() {
   const currentVotes = currentDare?.votes?.length || 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 p-4">
+    <div className="min-h-screen p-4">
       <div className="container mx-auto max-w-6xl py-8">
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Main Game Area */}
@@ -435,13 +435,13 @@ function GamePlayContent() {
                     <Target className="h-6 w-6" />
                     Game Progress
                   </CardTitle>
-                  <Badge variant="secondary" className="text-lg px-4 py-2">
+                  <Badge variant="soft" color="success" size="md">
                     Playing
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <div className="flex justify-between text-sm text-muted-foreground">
                     <span>Total Rounds: {game?.rounds}</span>
                     <span>
@@ -471,7 +471,7 @@ function GamePlayContent() {
 
             {/* Current Dare */}
             {!currentDare && !processing && (
-              <Card className="border-2 border-dashed">
+              <Card className="border-1 border-dashed border-border">
                 <CardContent className="py-12 text-center">
                   <Loader2 className="h-12 w-12 animate-spin text-muted-foreground mx-auto mb-4" />
                   <p className="text-lg text-muted-foreground">
@@ -482,18 +482,18 @@ function GamePlayContent() {
             )}
 
             {currentDare && (
-              <Card className="border-2 border-purple-300 shadow-lg">
+              <Card className="border border-border">
                 <CardHeader>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3 justify-between">
                     <div>
-                      <CardTitle className="text-2xl mb-2">
+                      <CardTitle className="text-xl mb-2">
                         {isCurrentPlayer
                           ? "Your Dare!"
                           : `${
                               game.players[currentDare.playerId]?.username
                             }'s Turn`}
                       </CardTitle>
-                      <Badge variant="outline">
+                      <Badge variant="soft" size="md">
                         {currentDare.dareCategory}
                       </Badge>
                     </div>
@@ -508,7 +508,7 @@ function GamePlayContent() {
                             }`}
                           />
                           <span
-                            className={`text-3xl font-bold ${
+                            className={`text-xl font-bold ${
                               dareTimeLeft <= 10
                                 ? "text-red-500"
                                 : "text-purple-600"
@@ -527,17 +527,17 @@ function GamePlayContent() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {/* Dare Text */}
-                  <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg">
-                    <p className="text-xl font-medium text-center">
+                  <div className="bg-primary/10 p-3 rounded-lg">
+                    <p className="text-lg font-medium text-center">
                       {currentDare.dareText}
                     </p>
                   </div>
 
                   {/* Time Warning */}
                   {isDareActive && dareTimeLeft <= 10 && dareTimeLeft > 0 && (
-                    <div className="flex items-center gap-2 p-3 bg-red-50 border-2 border-red-300 rounded-lg animate-pulse">
-                      <AlertCircle className="h-5 w-5 text-red-500" />
-                      <p className="text-red-700 font-semibold">
+                    <div className="flex items-center gap-2 p-3 bg-destructive/10 border-2 border-destructive/50 rounded-lg animate-pulse">
+                      <AlertCircle className="h-5 w-5 text-destructive" />
+                      <p className="text-destructive font-semibold">
                         Hurry! Time is running out!
                       </p>
                     </div>
@@ -547,31 +547,26 @@ function GamePlayContent() {
                   {isDareActive && isCurrentPlayer && (
                     <Button
                       onClick={handleMarkComplete}
-                      disabled={processing}
-                      className="w-full h-14 text-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                      className="w-full"
+                      loading={processing}
+                      loadingText="Processing..."
+                      size="xl"
                     >
-                      {processing ? (
-                        <>
-                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                          Processing...
-                        </>
-                      ) : (
-                        <>
-                          <CheckCircle2 className="mr-2 h-5 w-5" />
-                          Mark as Completed
-                        </>
-                      )}
+                      <>
+                        <CheckCircle2 className="mr-2 h-5 w-5" />
+                        Mark as Completed
+                      </>
                     </Button>
                   )}
 
                   {isDareActive && !isCurrentPlayer && (
-                    <div className="text-center p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                      <p className="text-blue-700">
+                    <div className="text-center p-3 bg-info/10 border border-info/50 rounded-lg">
+                      <p className="text-info-foreground">
                         Waiting for{" "}
                         {game.players[currentDare.playerId]?.username} to
                         complete the dare...
                       </p>
-                      <p className="text-sm text-blue-600 mt-1">
+                      <p className="text-sm text-info-foreground/60 mt-1">
                         Time remaining: {formatTime(dareTimeLeft)}
                       </p>
                     </div>
@@ -602,26 +597,28 @@ function GamePlayContent() {
                           <Button
                             onClick={() => handleVote("completed")}
                             disabled={processing}
-                            className="h-16 text-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                            className="w-full"
+                            size="xl"
+                            color="success"
                           >
-                            <CheckCircle2 className="mr-2 h-6 w-6" />
                             Completed
                           </Button>
                           <Button
                             onClick={() => handleVote("not_completed")}
                             disabled={processing}
-                            variant="destructive"
-                            className="h-16 text-lg"
+                            variant="solid"
+                            className="w-full"
+                            color="destructive"
+                            size="xl"
                           >
-                            <XCircle className="mr-2 h-6 w-6" />
                             Not Completed
                           </Button>
                         </div>
                       )}
 
                       {!isCurrentPlayer && hasVoted && (
-                        <div className="text-center p-4 bg-green-50 border border-green-200 rounded-lg">
-                          <CheckCircle2 className="h-8 w-8 text-green-500 mx-auto mb-2" />
+                        <div className="text-center p-4 bg-success/10 border border-success/50 rounded-lg">
+                          <CheckCircle2 className="h-8 w-8 text-success-foreground mx-auto mb-2" />
                           <p className="text-green-700 font-medium">
                             Vote submitted! Waiting for others...
                           </p>
@@ -629,7 +626,7 @@ function GamePlayContent() {
                       )}
 
                       {isCurrentPlayer && (
-                        <div className="text-center p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                        <div className="text-center p-3 bg-primary/10 rounded-lg">
                           <p className="text-purple-700">
                             Other players are voting on your performance...
                           </p>

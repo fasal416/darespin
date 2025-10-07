@@ -157,12 +157,12 @@ function CreateGameContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 p-4">
+    <div className="min-h-screen bg-gradient-to-br p-4">
       <div className="container mx-auto max-w-2xl py-8">
         <Button
           variant="ghost"
           onClick={() => router.push("/dashboard")}
-          className="mb-6 text-white hover:bg-white/10"
+          className="mb-6"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Dashboard
@@ -170,15 +170,15 @@ function CreateGameContent() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-3xl">Create New Game</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-2xl">Create New Game</CardTitle>
+            <CardDescription className="text-muted-foreground">
               Set up your game settings and invite your friends
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Number of Rounds */}
             <div className="space-y-2">
-              <Label htmlFor="rounds" className="text-lg font-semibold">
+              <Label htmlFor="rounds" className="font-semibold">
                 Number of Rounds
               </Label>
               <Select value={rounds} onValueChange={setRounds}>
@@ -193,18 +193,15 @@ function CreateGameContent() {
                   ))}
                 </SelectContent>
               </Select>
-              <p className="text-sm text-muted-foreground">
-                Each round, every player gets one dare
-              </p>
             </div>
 
             {/* Dare Categories */}
             <div className="space-y-3">
-              <Label className="text-lg font-semibold">Dare Categories</Label>
+              <Label className="font-semibold">Dare Categories</Label>
               <p className="text-sm text-muted-foreground">
                 Select the types of dares you want in your game
               </p>
-              <div className="space-y-3 border rounded-lg p-4 bg-slate-50">
+              <div className="space-y-3 border rounded-lg p-4 border-border">
                 {CATEGORIES.map((category) => (
                   <div key={category} className="flex items-center space-x-3">
                     <Checkbox
@@ -227,15 +224,17 @@ function CreateGameContent() {
             </div>
 
             {error && (
-              <div className="text-sm text-red-500 bg-red-50 p-3 rounded-md">
+              <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">
                 {error}
               </div>
             )}
 
             <Button
               onClick={handleCreateGame}
-              disabled={loading || selectedCategories.length === 0}
-              className="w-full h-12 text-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+              disabled={selectedCategories.length === 0}
+              loading={loading}
+              className="w-full"
+              size="xl"
             >
               {loading ? (
                 <>

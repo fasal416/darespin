@@ -75,10 +75,10 @@ function ResultsContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-500 via-orange-500 to-pink-500">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center space-y-4">
-          <Loader2 className="h-12 w-12 animate-spin text-white mx-auto" />
-          <p className="text-white text-lg">Loading results...</p>
+          <Loader2 className="h-12 w-12 animate-spin text-foreground mx-auto" />
+          <p className="text-lg">Loading results...</p>
         </div>
       </div>
     );
@@ -95,11 +95,11 @@ function ResultsContent() {
   const getMedalIcon = (position) => {
     switch (position) {
       case 0:
-        return <Trophy className="h-8 w-8 text-amber-500" />;
+        return <Trophy className="h-6 w-6 text-amber-500" />;
       case 1:
-        return <Medal className="h-8 w-8 text-slate-400" />;
+        return <Medal className="h-6 w-6 text-slate-400" />;
       case 2:
-        return <Award className="h-8 w-8 text-amber-700" />;
+        return <Award className="h-6 w-6 text-amber-700" />;
       default:
         return null;
     }
@@ -119,25 +119,23 @@ function ResultsContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-500 via-orange-500 to-pink-500 p-4">
+    <div className="min-h-screen p-4">
       <div className="container mx-auto max-w-4xl py-8">
         {/* Celebration Header */}
         <div className="text-center mb-8 space-y-4">
           <div className="flex items-center justify-center gap-3">
-            <Sparkles className="h-12 w-12 text-white animate-pulse" />
-            <h1 className="text-5xl font-bold text-white">Game Over!</h1>
-            <Sparkles className="h-12 w-12 text-white animate-pulse" />
+            <Sparkles className="h-12 w-12 animate-pulse text-primary" />
+            <h1 className="text-2xl font-bold text-white">Game Over!</h1>
+            <Sparkles className="h-12 w-12 animate-pulse text-accent" />
           </div>
 
           {isUserWinner ? (
-            <div className="bg-white/20 backdrop-blur border-2 border-white/50 rounded-2xl p-6 inline-block">
-              <p className="text-3xl font-bold text-white mb-2">
-                🎉 Congratulations! 🎉
-              </p>
-              <p className="text-xl text-white/90">You won the game!</p>
+            <div className="bg-success backdrop-blur border border-border rounded-2xl p-6 inline-block">
+              <p className="text-2xl font-bold mb-2">🎉 Congratulations! 🎉</p>
+              <p className="text-xl">You won the game!</p>
             </div>
           ) : (
-            <div className="bg-white/20 backdrop-blur border-2 border-white/50 rounded-2xl p-6 inline-block">
+            <div className="bg-card backdrop-blur border border-border rounded-2xl p-6 inline-block">
               <p className="text-2xl font-bold text-white">
                 Thanks for playing!
               </p>
@@ -155,7 +153,7 @@ function ResultsContent() {
                   <p className="text-white/90 text-lg font-semibold mb-1">
                     WINNER
                   </p>
-                  <p className="text-4xl font-bold text-white">
+                  <p className="text-2xl font-bold text-white">
                     {winner[1].username}
                   </p>
                   <p className="text-2xl font-bold text-white/90 mt-2">
@@ -184,19 +182,19 @@ function ResultsContent() {
             {sortedPlayers.map(([playerId, playerData], index) => (
               <div key={playerId}>
                 <div
-                  className={`flex items-center gap-4 p-4 rounded-xl ${
+                  className={`flex items-center gap-4 p-2 rounded-xl ${
                     playerId === user?.uid
-                      ? "bg-gradient-to-r from-purple-100 to-pink-100 border-2 border-purple-300"
+                      ? "bg-card border border-border"
                       : index === 0
-                      ? "bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-amber-300"
-                      : "bg-slate-50"
+                      ? "bg-card border border-border"
+                      : "bg-card"
                   }`}
                 >
                   {/* Position */}
                   <div className="flex-shrink-0">
                     {index < 3 ? (
                       <div
-                        className={`w-16 h-16 rounded-full bg-gradient-to-br ${getMedalColor(
+                        className={`w-12 h-12 rounded-full bg-gradient-to-br ${getMedalColor(
                           index
                         )} flex items-center justify-center shadow-lg`}
                       >
@@ -209,15 +207,8 @@ function ResultsContent() {
                     )}
                   </div>
 
-                  {/* Player Info */}
-                  <Avatar className="h-14 w-14">
-                    <AvatarFallback className="bg-gradient-to-br from-blue-400 to-cyan-400 text-white text-xl font-bold">
-                      {playerData.username?.charAt(0).toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
-
                   <div className="flex-1">
-                    <p className="text-xl font-bold">
+                    <p className="font-medium">
                       {playerData.username}
                       {playerId === user?.uid && (
                         <span className="text-purple-600 ml-2">(You)</span>
@@ -245,7 +236,7 @@ function ResultsContent() {
 
                   {/* Trophy for winner */}
                   {index === 0 && (
-                    <Trophy className="h-10 w-10 text-amber-500 animate-pulse" />
+                    <Trophy className="h-8 w-8 text-amber-500 animate-pulse" />
                   )}
                 </div>
 
@@ -258,31 +249,31 @@ function ResultsContent() {
         </Card>
 
         {/* Game Stats */}
-        <Card className="mb-8 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+        <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl">Game Statistics</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center p-4 bg-white rounded-lg shadow">
+              <div className="text-center p-3 border border-border rounded-lg">
                 <p className="text-3xl font-bold text-purple-600">
                   {game?.rounds}
                 </p>
                 <p className="text-sm text-muted-foreground">Rounds Played</p>
               </div>
-              <div className="text-center p-4 bg-white rounded-lg shadow">
+              <div className="text-center p-3 border border-border rounded-lg">
                 <p className="text-3xl font-bold text-pink-600">
                   {Object.keys(game?.players || {}).length}
                 </p>
                 <p className="text-sm text-muted-foreground">Total Players</p>
               </div>
-              <div className="text-center p-4 bg-white rounded-lg shadow">
+              <div className="text-center p-3 border border-border rounded-lg">
                 <p className="text-3xl font-bold text-orange-600">
                   {game?.usedDareIds?.length || 0}
                 </p>
                 <p className="text-sm text-muted-foreground">Dares Completed</p>
               </div>
-              <div className="text-center p-4 bg-white rounded-lg shadow">
+              <div className="text-center p-3 border border-border rounded-lg">
                 <p className="text-3xl font-bold text-amber-600">
                   {winner?.[1]?.points || 0}
                 </p>
@@ -295,16 +286,12 @@ function ResultsContent() {
         {/* Categories Used */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="text-xl">Categories Played</CardTitle>
+            <CardTitle className="">Categories Played</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
               {game?.categories?.map((category) => (
-                <Badge
-                  key={category}
-                  variant="secondary"
-                  className="text-base px-4 py-2"
-                >
+                <Badge key={category} variant="soft" size="md">
                   {category}
                 </Badge>
               ))}
@@ -316,7 +303,8 @@ function ResultsContent() {
         <div className="flex flex-col sm:flex-row gap-4">
           <Button
             onClick={() => router.push("/dashboard")}
-            className="flex-1 h-14 text-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+            className="w-full"
+            size="xl"
           >
             <Home className="mr-2 h-5 w-5" />
             Back to Dashboard
@@ -325,12 +313,12 @@ function ResultsContent() {
 
         {/* Footer Message */}
         <div className="mt-8 text-center">
-          <Card className="bg-white/20 backdrop-blur border-white/40">
+          <Card className="">
             <CardContent className="py-6">
-              <p className="text-white text-lg font-medium">
+              <p className="text-lg font-medium">
                 Thanks for playing! 🎮
               </p>
-              <p className="text-white/80 mt-2">
+              <p className="text-muted-foreground mt-2">
                 Create a new game or join another to keep the fun going!
               </p>
             </CardContent>

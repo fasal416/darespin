@@ -188,10 +188,9 @@ function LobbyContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center space-y-4">
-          <Loader2 className="h-12 w-12 animate-spin text-white mx-auto" />
-          <p className="text-white text-lg">Loading game...</p>
+          <Loader2 className="h-12 w-12 animate-spin text-foreground mx-auto" />
         </div>
       </div>
     );
@@ -199,10 +198,10 @@ function LobbyContent() {
 
   if (error && !game) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-card p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle className="text-red-500">Error</CardTitle>
+            <CardTitle className="text-destructive">Error</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <p>{error}</p>
@@ -224,24 +223,24 @@ function LobbyContent() {
   const isInGame = players[user?.uid];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-4">
+    <div className="min-h-screen p-4">
       <div className="container mx-auto max-w-4xl py-8">
         <Button
           variant="ghost"
           onClick={() => router.push("/dashboard")}
-          className="mb-6 text-white hover:bg-white/10"
+          className="mb-4"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Dashboard
         </Button>
 
-        <div className="grid gap-6">
+        <div className="grid gap-4">
           {/* Game Info Card */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-3xl flex items-center justify-between">
+              <CardTitle className="text-2xl flex items-center justify-between">
                 <span>Game Lobby</span>
-                <Badge variant="secondary" className="text-lg px-4 py-2">
+                <Badge variant="soft" color="warning">
                   Waiting
                 </Badge>
               </CardTitle>
@@ -253,12 +252,12 @@ function LobbyContent() {
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Game Code */}
-              <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg">
+              <div className="bg-primary/10 p-6 rounded-lg">
                 <div className="text-center space-y-3">
                   <p className="text-sm font-medium text-muted-foreground">
                     Game Code
                   </p>
-                  <div className="text-5xl font-bold tracking-widest text-purple-600">
+                  <div className="text-3xl font-bold tracking-widest text-primary">
                     {gameCode}
                   </div>
                   <div className="flex gap-2 justify-center">
@@ -282,19 +281,17 @@ function LobbyContent() {
                 </div>
               </div>
 
-              <Separator />
-
               {/* Game Settings */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
-                  <Layers className="h-8 w-8 text-purple-500" />
+              <div className="grid grid-cols-2 gap-2">
+                <div className="flex items-center gap-3 p-2 border border-border rounded-lg">
+                  <Layers className="h-8 w-8 text-primary" />
                   <div>
                     <p className="text-sm text-muted-foreground">Rounds</p>
                     <p className="text-2xl font-bold">{game?.rounds}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
-                  <Target className="h-8 w-8 text-pink-500" />
+                <div className="flex items-center gap-3 p-2 border border-border rounded-lg">
+                  <Target className="h-8 w-8 text-primary" />
                   <div>
                     <p className="text-sm text-muted-foreground">Categories</p>
                     <p className="text-2xl font-bold">
@@ -306,12 +303,12 @@ function LobbyContent() {
 
               {/* Categories */}
               <div>
-                <p className="text-sm font-medium text-muted-foreground mb-2">
-                  Selected Categories:
+                <p className="text-xs font-medium text-muted-foreground mb-2">
+                  Selected Categories
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {game?.categories?.map((category) => (
-                    <Badge key={category} variant="secondary">
+                    <Badge key={category} variant="soft" color="accent">
                       {category}
                     </Badge>
                   ))}
@@ -338,10 +335,10 @@ function LobbyContent() {
                 {Object.entries(players).map(([playerId, playerData]) => (
                   <div
                     key={playerId}
-                    className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg"
+                    className="flex items-center gap-3 p-2 border border-border rounded-lg"
                   >
                     <Avatar>
-                      <AvatarFallback className="bg-gradient-to-br from-purple-400 to-pink-400 text-white">
+                      <AvatarFallback className="bg-primary text-primary-foreground">
                         {playerData.username?.charAt(0).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
@@ -362,8 +359,8 @@ function LobbyContent() {
               </div>
 
               {playerCount < 5 && (
-                <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg text-center">
-                  <p className="text-sm text-blue-700">
+                <div className="mt-4 p-2 bg-muted border border-border rounded-lg text-center">
+                  <p className="text-sm text-muted-foreground">
                     {isInGame
                       ? `Waiting for more players... (${
                           5 - playerCount
@@ -377,61 +374,53 @@ function LobbyContent() {
 
           {/* Error Message */}
           {error && (
-            <Card className="border-red-200 bg-red-50">
+            <Card className="border-red-200 bg-destructive/10">
               <CardContent className="pt-6">
-                <p className="text-red-600 text-center">{error}</p>
+                <p className="text-destructive text-center">{error}</p>
               </CardContent>
             </Card>
           )}
 
-          {/* Join Button (if not in game) */}
-          {!isInGame && game?.status === "waiting" && (
-            <Button
-              onClick={handleJoinGame}
-              disabled={joining || playerCount >= 5}
-              className="w-full h-14 text-lg bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600"
-            >
-              {joining ? (
-                <>
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Joining...
-                </>
-              ) : (
+          <div className="w-full h-10"></div>
+
+          <div className="fixed bottom-0 left-0 right-0 pb-6 pt-4 px-5 bg-gradient-to-t from-card to-transparent">
+            {/* Start Game Button (Admin Only) */}
+            {isAdmin && isInGame && (
+              <Button
+                onClick={handleStartGame}
+                disabled={starting || playerCount < 2}
+                className="w-full"
+                size="xl"
+                loading={starting}
+                loadingText="Starting Game..."
+              >
+                Start Game
+              </Button>
+            )}
+
+            {/* Join Button (if not in game) */}
+            {!isInGame && game?.status === "waiting" && (
+              <Button
+                onClick={handleJoinGame}
+                disabled={playerCount >= 5}
+                className="w-full"
+                size="xl"
+                loading={joining}
+                loadingText="  Joining..."
+              >
                 <>
                   <UserPlus className="mr-2 h-5 w-5" />
                   Join Game
                 </>
-              )}
-            </Button>
-          )}
+              </Button>
+            )}
 
-          {/* Start Game Button (Admin Only) */}
-          {isAdmin && isInGame && (
-            <Button
-              onClick={handleStartGame}
-              disabled={starting || playerCount < 2}
-              className="w-full h-14 text-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
-            >
-              {starting ? (
-                <>
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Starting Game...
-                </>
-              ) : (
-                "Start Game"
-              )}
-            </Button>
-          )}
-
-          {!isAdmin && isInGame && (
-            <Card className="bg-amber-50 border-amber-200">
-              <CardContent className="pt-6 text-center">
-                <p className="text-amber-700">
-                  Waiting for the admin to start the game...
-                </p>
-              </CardContent>
-            </Card>
-          )}
+            {!isAdmin && isInGame && (
+              <div className="p-2 bg-success rounded-lg">
+                Waiting for the admin to start the game
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

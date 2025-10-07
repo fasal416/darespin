@@ -1,0 +1,302 @@
+[
+  {
+    "id": "silly_1",
+    "category": "Silly Challenges",
+    "text": "Do your best impression of a celebrity for 30 seconds",
+    "timeLimit": 60
+  },
+  {
+    "id": "silly_2",
+    "category": "Silly Challenges",
+    "text": "Speak in a funny accent for the next 2 minutes",
+    "timeLimit": 120
+  },
+  {
+    "id": "silly_3",
+    "category": "Silly Challenges",
+    "text": "Make up and perform a silly dance",
+    "timeLimit": 45
+  },
+  {
+    "id": "silly_4",
+    "category": "Silly Challenges",
+    "text": "Tell the worst joke you know with a straight face",
+    "timeLimit": 30
+  },
+  {
+    "id": "silly_5",
+    "category": "Silly Challenges",
+    "text": "Act like your favorite animal for 1 minute",
+    "timeLimit": 60
+  },
+  {
+    "id": "silly_6",
+    "category": "Silly Challenges",
+    "text": "Sing 'Happy Birthday' in an opera voice",
+    "timeLimit": 45
+  },
+  {
+    "id": "silly_7",
+    "category": "Silly Challenges",
+    "text": "Do your best robot dance",
+    "timeLimit": 60
+  },
+  {
+    "id": "silly_8",
+    "category": "Silly Challenges",
+    "text": "Make funny faces for 30 seconds without laughing",
+    "timeLimit": 30
+  },
+  {
+    "id": "silly_9",
+    "category": "Silly Challenges",
+    "text": "Pretend to be a news reporter and give a silly weather report",
+    "timeLimit": 60
+  },
+  {
+    "id": "silly_10",
+    "category": "Silly Challenges",
+    "text": "Walk like a penguin around your space",
+    "timeLimit": 45
+  },
+  {
+    "id": "creative_1",
+    "category": "Creative Tasks",
+    "text": "Draw a self-portrait with your eyes closed",
+    "timeLimit": 90
+  },
+  {
+    "id": "creative_2",
+    "category": "Creative Tasks",
+    "text": "Create a 4-line poem about pizza",
+    "timeLimit": 120
+  },
+  {
+    "id": "creative_3",
+    "category": "Creative Tasks",
+    "text": "Make up a new word and define it convincingly",
+    "timeLimit": 60
+  },
+  {
+    "id": "creative_4",
+    "category": "Creative Tasks",
+    "text": "Create a short story using only 5 words",
+    "timeLimit": 60
+  },
+  {
+    "id": "creative_5",
+    "category": "Creative Tasks",
+    "text": "Invent a new handshake and demonstrate it",
+    "timeLimit": 90
+  },
+  {
+    "id": "creative_6",
+    "category": "Creative Tasks",
+    "text": "Create a commercial jingle for a made-up product",
+    "timeLimit": 120
+  },
+  {
+    "id": "creative_7",
+    "category": "Creative Tasks",
+    "text": "Design a superhero and describe their powers",
+    "timeLimit": 90
+  },
+  {
+    "id": "creative_8",
+    "category": "Creative Tasks",
+    "text": "Make up a new holiday and explain how to celebrate it",
+    "timeLimit": 120
+  },
+  {
+    "id": "creative_9",
+    "category": "Creative Tasks",
+    "text": "Create a tongue twister and say it 5 times fast",
+    "timeLimit": 90
+  },
+  {
+    "id": "creative_10",
+    "category": "Creative Tasks",
+    "text": "Invent a new dance move and name it",
+    "timeLimit": 90
+  },
+  {
+    "id": "physical_1",
+    "category": "Physical Challenges",
+    "text": "Do 10 jumping jacks",
+    "timeLimit": 45
+  },
+  {
+    "id": "physical_2",
+    "category": "Physical Challenges",
+    "text": "Balance on one foot for 30 seconds",
+    "timeLimit": 30
+  },
+  {
+    "id": "physical_3",
+    "category": "Physical Challenges",
+    "text": "Do 5 push-ups (or knee push-ups)",
+    "timeLimit": 60
+  },
+  {
+    "id": "physical_4",
+    "category": "Physical Challenges",
+    "text": "Spin around 5 times and walk in a straight line",
+    "timeLimit": 60
+  },
+  {
+    "id": "physical_5",
+    "category": "Physical Challenges",
+    "text": "Hold a plank position for 20 seconds",
+    "timeLimit": 20
+  },
+  {
+    "id": "physical_6",
+    "category": "Physical Challenges",
+    "text": "Do your best moonwalk across the room",
+    "timeLimit": 45
+  },
+  {
+    "id": "physical_7",
+    "category": "Physical Challenges",
+    "text": "Touch your toes 10 times",
+    "timeLimit": 45
+  },
+  {
+    "id": "physical_8",
+    "category": "Physical Challenges",
+    "text": "Do 10 squats",
+    "timeLimit": 60
+  },
+  {
+    "id": "physical_9",
+    "category": "Physical Challenges",
+    "text": "Hop on one foot 10 times",
+    "timeLimit": 45
+  },
+  {
+    "id": "physical_10",
+    "category": "Physical Challenges",
+    "text": "Do a silly walk for 30 seconds",
+    "timeLimit": 30
+  },
+  {
+    "id": "brain_1",
+    "category": "Brain Teasers",
+    "text": "Say the alphabet backwards as fast as you can",
+    "timeLimit": 90
+  },
+  {
+    "id": "brain_2",
+    "category": "Brain Teasers",
+    "text": "Name 10 countries in 30 seconds",
+    "timeLimit": 30
+  },
+  {
+    "id": "brain_3",
+    "category": "Brain Teasers",
+    "text": "Count backwards from 50 to 1 as fast as possible",
+    "timeLimit": 60
+  },
+  {
+    "id": "brain_4",
+    "category": "Brain Teasers",
+    "text": "Name 5 things that are blue",
+    "timeLimit": 30
+  },
+  {
+    "id": "brain_5",
+    "category": "Brain Teasers",
+    "text": "Spell your name backwards and say it out loud",
+    "timeLimit": 30
+  },
+  {
+    "id": "brain_6",
+    "category": "Brain Teasers",
+    "text": "Name all 7 days of the week backwards",
+    "timeLimit": 30
+  },
+  {
+    "id": "brain_7",
+    "category": "Brain Teasers",
+    "text": "Name 8 animals that start with the letter 'C'",
+    "timeLimit": 60
+  },
+  {
+    "id": "brain_8",
+    "category": "Brain Teasers",
+    "text": "Recite the months of the year in reverse order",
+    "timeLimit": 45
+  },
+  {
+    "id": "brain_9",
+    "category": "Brain Teasers",
+    "text": "Name 5 colors in alphabetical order",
+    "timeLimit": 45
+  },
+  {
+    "id": "brain_10",
+    "category": "Brain Teasers",
+    "text": "Count to 20 by twos as fast as you can",
+    "timeLimit": 30
+  },
+  {
+    "id": "social_1",
+    "category": "Social Dares",
+    "text": "Compliment each player in the game",
+    "timeLimit": 90
+  },
+  {
+    "id": "social_2",
+    "category": "Social Dares",
+    "text": "Share your most embarrassing moment",
+    "timeLimit": 90
+  },
+  {
+    "id": "social_3",
+    "category": "Social Dares",
+    "text": "Tell everyone your hidden talent",
+    "timeLimit": 60
+  },
+  {
+    "id": "social_4",
+    "category": "Social Dares",
+    "text": "Share a funny childhood memory",
+    "timeLimit": 90
+  },
+  {
+    "id": "social_5",
+    "category": "Social Dares",
+    "text": "Describe your dream vacation",
+    "timeLimit": 60
+  },
+  {
+    "id": "social_6",
+    "category": "Social Dares",
+    "text": "Share your favorite movie and why you love it",
+    "timeLimit": 90
+  },
+  {
+    "id": "social_7",
+    "category": "Social Dares",
+    "text": "Tell everyone about your biggest fear",
+    "timeLimit": 60
+  },
+  {
+    "id": "social_8",
+    "category": "Social Dares",
+    "text": "Share your most unusual food combination that you love",
+    "timeLimit": 60
+  },
+  {
+    "id": "social_9",
+    "category": "Social Dares",
+    "text": "Describe your perfect day",
+    "timeLimit": 90
+  },
+  {
+    "id": "social_10",
+    "category": "Social Dares",
+    "text": "Share one thing on your bucket list",
+    "timeLimit": 60
+  }
+]
